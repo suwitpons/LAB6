@@ -135,8 +135,8 @@ int main(void)
 		//1 Khz Loop
 		if (micros() - TimeOutputLoop > 1000) {
 			TimeOutputLoop = micros();
-			Voltage = ADCFeedBack*3.3/4096;
-
+			Voltage = (ADCFeedBack*3.3*PWMOut)/(4096*10000);
+			PWMOut = (4096*10000)/(ADCFeedBack*3.3);
 //			PWMOut = Voltage/ADCFeedBack;
 
 			// #001
@@ -146,10 +146,6 @@ int main(void)
 		}
 
 		if (ADCUpdateFlag) {
-			duty = PWMOut ;
-			PWMOut = duty*1.5/Voltage ;
-
-			a =1 ;
 			ADCUpdateFlag = 0;
 			//#002
 		}
