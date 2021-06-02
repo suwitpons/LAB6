@@ -136,8 +136,7 @@ int main(void)
 		if (micros() - TimeOutputLoop > 1000) {
 			TimeOutputLoop = micros();
 			Voltage = (ADCFeedBack*3.3*PWMOut)/(4096*10000);
-			PWMOut = (4096*10000)/(ADCFeedBack*3.3);
-//			PWMOut = Voltage/ADCFeedBack;
+			PWMOut = (1*4096*10000)/(ADCFeedBack*3.3);
 
 			// #001
 
